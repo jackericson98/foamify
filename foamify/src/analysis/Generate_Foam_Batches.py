@@ -33,7 +33,7 @@ if __name__ == '__main__':
     num_vals = [1000]
     pbc_vals = ['False']
     dist_vals = ['gamma']
-    my_string = "python foam_gen.py mean {:.3f} cv {:.3f} num {} den {:.3f} olp {} dist {} pbc {} \n"
+    my_string = "python foamify.py mean {:.3f} cv {:.3f} num {} den {:.3f} olp {} dist {} pbc {} \n"
     number_of_foam_files = 20
     number_of_files = 10
     # Count the number of foams that need to be created

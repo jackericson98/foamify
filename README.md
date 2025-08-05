@@ -49,13 +49,13 @@ foamify
 Or run as a Python module:
 
 ```bash
-python -m foam_gen
+python -m foamify
 ```
 
 ### Python API
 
 ```python
-import foam_gen
+import foamify
 
 # Use the package programmatically
 # (API documentation coming soon)

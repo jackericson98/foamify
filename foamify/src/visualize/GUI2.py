@@ -19,9 +19,9 @@ class HelpGUI:
         # Dictionary to hold the help topics and their descriptions
         self.help_info = {
             "About": "\n\n".join([textwrap.fill(section, width=40) for section in [
-                     "Welcome to foam_gen Help!",
+                     "Welcome to foamify Help!",
                      "This program can be used to generate statistical ensembles of balls. These ensembles can be used to represent foams or simply as packings of spheres.",
-                     "foam_gen outputs four files: a TXT file with the balls locations and radii, a similar PDB file, a PyMOL script that sets the ball radii in PyMOL, and an OFF file with the retaining box.",
+                     "foamify outputs four files: a TXT file with the balls locations and radii, a similar PDB file, a PyMOL script that sets the ball radii in PyMOL, and an OFF file with the retaining box.",
                      "The name of the directory and the ball files refer to the settings used to create it, separated by underscores in the following order: Mean, CV, Number, Density, Overlap, PBC.",
                      "For more information on any of the settings, use the dropdown menu above."]]),
 
@@ -134,7 +134,7 @@ class SettingsGUI:
         self.pbc_var = tk.BooleanVar(value=self.data['pbc'])
         self.sar_var = tk.BooleanVar(value=self.data['sar'])
         self.dir_var = tk.StringVar(value=self.data['dir'])
-        self.dir_var_name = tk.StringVar(value="./foam_gen" + self.data['dir'][1:])
+        self.dir_var_name = tk.StringVar(value="./foamify" + self.data['dir'][1:])
 
     def create_styles(self):
         style = ttk.Style(self.root)

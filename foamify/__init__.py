@@ -1,5 +1,5 @@
 """
-foam_gen - An interactive simulated foam generator
+foamify - An interactive simulated foam generator
 
 A Python package for creating 3-dimensional random ensembles of spheres,
 mimicking the bubbles in foam based on user-defined parameters.

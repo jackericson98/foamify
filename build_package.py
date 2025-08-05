@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build script for foam_gen package.
+Build script for foamify package.
 """
 
 import subprocess
@@ -70,7 +70,7 @@ def check_package():
 
 def main():
     """Main build process."""
-    print("🚀 Building foam_gen package...")
+    print("🚀 Building foamify package...")
     
     # Clean previous builds
     clean_build()

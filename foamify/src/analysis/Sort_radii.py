@@ -1,7 +1,7 @@
 import numpy as np
 import tkinter as tk
 from tkinter import filedialog
-from foam_gen.src.system import System
+from foamify.src.system import System
 
 
 if __name__ == '__main__':
@@ -31,4 +31,4 @@ if __name__ == '__main__':
         for __ in x_ticks:
             coordinates.append([0, _, __])
 
-    my_sys = System(bubbles=[(coordinates[i], radii[i]) for i in range(len(radii))], output_directory='C:/Users/jacke/PycharmProjects/foam_gen/Data/user_data')
+    my_sys = System(bubbles=[(coordinates[i], radii[i]) for i in range(len(radii))], output_directory='C:/Users/jacke/PycharmProjects/foamify/Data/user_data')

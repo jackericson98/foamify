@@ -42,7 +42,7 @@ setup(
     install_requires=read_requirements(),
     entry_points={
         "console_scripts": [
-            "foamify=foam_gen.__main__:main",
+            "foamify=foamify.__main__:main",
         ],
     },
     license="MIT",

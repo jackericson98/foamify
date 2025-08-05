@@ -4,9 +4,9 @@ import pandas as pd
 from joblib import load
 from numpy import sqrt, array, random, cbrt, linspace
 from pandas import DataFrame
-from foam_gen.src.calcs import get_bubbles, calc_dist_numba, calc_tot_vol
-from foam_gen.src.make_foam.distributions import get_bubble_radii
-from foam_gen.src.make_foam.atomic import standardize_radii_to_atomic
+from foamify.src.calcs import get_bubbles, calc_dist_numba, calc_tot_vol
+from foamify.src.make_foam.distributions import get_bubble_radii
+from foamify.src.make_foam.atomic import standardize_radii_to_atomic
 
 
 

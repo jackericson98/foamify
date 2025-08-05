@@ -4,7 +4,7 @@ from joblib import load
 import pandas as pd
 
 # Load your model
-model = load('C:/Users/Optiplex_7060/PycharmProjects/foam_gen/Data/linreg_pipeline.pkl')
+model = load('C:/Users/Optiplex_7060/PycharmProjects/foamify/Data/linreg_pipeline.pkl')
 
 densities = np.linspace(0.1, 0.75, 100)
 distribution = 'gamma'

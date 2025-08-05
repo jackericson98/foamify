@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -10,7 +10,7 @@ readme = "README.md"
 authors = [
     {name = "John Ericson", email = "jackericson98@gmail.com"}
 ]
-license = "MIT"
+    license = "MIT"
 keywords = ["foam", "simulation", "3d", "spheres", "physics", "visualization"]
 classifiers = [
     "Development Status :: 3 - Alpha",

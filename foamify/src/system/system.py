@@ -2,9 +2,9 @@ import os
 from numpy import inf
 from pandas import DataFrame
 
-from foam_gen.src.output import output_all
-from foam_gen.src.make_foam import make_foam
-from foam_gen.src.visualize import SettingsGUI
+from foamify.src.output import output_all
+from foamify.src.make_foam import make_foam
+from foamify.src.visualize import SettingsGUI
 
 
 class System:

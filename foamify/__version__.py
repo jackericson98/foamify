@@ -1,5 +1,5 @@
 """
-Version information for foam_gen package.
+Version information for foamify package.
 """
 
 __version__ = "0.1.0"

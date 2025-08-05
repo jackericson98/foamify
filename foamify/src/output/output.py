@@ -1,7 +1,7 @@
 import numpy as np
 import os
-from foam_gen.src.draw import draw_line
-from foam_gen.src.calcs import pdb_line, periodicize
+from foamify.src.draw import draw_line
+from foamify.src.calcs import pdb_line, periodicize
 
 
 def output_all(sys, my_dir=None):
@@ -48,7 +48,7 @@ def write_pdb(sys, directory=None):
     # Open the file for writing
     with open(sys.name + '.pdb', 'w') as pdb_file:
         # Write the header that lets vorpy know it is a foam pdb
-        pdb_file.write('REMARK foam_gen Box WHL = {:.3f}, Average Radius = {}, CV = {}, Number of Primary Balls = '
+        pdb_file.write('REMARK foamify Box WHL = {:.3f}, Average Radius = {}, CV = {}, Number of Primary Balls = '
                        '{}, Density = {}, Overlap Allowance = {}r, Distribution = {}, '
                        'Periodic Boundary Conditions? = {}, Standardized Radii to Atomic? = {}\n'
                        .format(sys.box[1][1], sys.data['avg'], sys.data['std'], sys.data['num'],

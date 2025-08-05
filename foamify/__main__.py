@@ -11,12 +11,12 @@ __path__ = [os.path.dirname(__file__), os.path.join(os.path.dirname(__file__), "
 
 
 def main():
-    "Main function to run foam_gen"
+    "Main function to run foamify"
     try:
-        from foam_gen.src.system import System
+        from foamify.src.system import System
         my_sys = System(sys.argv)
     except ImportError:
-        print("Error: Could not import foam_gen.src.system.system")
+        print("Error: Could not import foamify.src.system.system")
         return 1
 
 
