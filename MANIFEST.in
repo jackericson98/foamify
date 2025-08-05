@@ -1,0 +1,27 @@
+include README.md
+include requirements.txt
+include pyproject.toml
+include setup.py
+
+# Include package data
+recursive-include foam_gen *.txt
+recursive-include foam_gen *.md
+recursive-include foam_gen *.yml
+recursive-include foam_gen *.yaml
+
+# Exclude unnecessary files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude .DS_Store
+global-exclude .git*
+global-exclude *.egg-info
+global-exclude .pytest_cache
+global-exclude .coverage
+global-exclude htmlcov
+global-exclude .mypy_cache
+global-exclude .tox
+global-exclude venv
+global-exclude .venv
+global-exclude env
+global-exclude .env 
