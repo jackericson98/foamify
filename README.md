@@ -58,7 +58,8 @@ The project was created in collaboration with the Chemistry Department at Georgi
 
 # Parameters
 
-Foamify supports a range of customizable parameters that define the geometric and statistical properties of the generated foam. These inputs allow you to tailor the output to specific physical or simulation constraints.
+*Foamify* supports a range of customizable parameters that define the geometric and statistical properties of the generated foam. These inputs allow you to tailor the output to specific physical or simulation constraints.
+
 
 ### 📏 **Size & Distribution Parameters**
 
@@ -67,57 +68,66 @@ Foamify supports a range of customizable parameters that define the geometric an
   **Typical range**: `0.1 – 1000.0`
 
 - **`Polydispersity`** *(float, default: 0.25)*  
-  Controls the spread of the sphere sizes. A value of 0 produces monodisperse spheres; higher values introduce variability. Corresponds to the coefficient of variation of the distribution of radii. 
+  Controls the spread of sphere sizes. A value of `0.0` produces monodisperse spheres; higher values introduce greater variability.  
+  Corresponds to the coefficient of variation of the distribution of radii.  
   **Typical range**: `0.0 – 10.0`
 
 - **`Distribution Type`** *(str, default: `'normal'`)*  
-  Statistical distribution used to generate sphere radii.  
+  Statistical distribution used to generate sphere radii. Controls how sphere sizes are sampled.  
   **Options**:
-  - `'uniform'` – all sizes within a fixed range  
-  - `'normal'` – bell curve centered on mean  
-  - `'lognormal'` – skewed distributions for highly porous media
+  - `'Normal'` – Bell-shaped curve centered at the mean. Common and symmetric.  
+  - `'Lognormal'` – Skewed distribution where values are always positive and clustered near the low end. Useful for modeling natural growth.  
+  - `'Gamma'` – Skewed, positive-only distribution with tunable shape; useful for modeling waiting times or clustered processes.  
+  - `'Weibull'` – Flexible skewed distribution often used in reliability analysis and fracture modeling.  
+  - `'Half-Normal'` – Similar to a normal distribution but only includes positive values.  
+  - `'Uniform'` – All sizes within a specified range are equally likely.  
+  - `'Physical'` – Empirically derived distributions based on real-world granular systems:
+    1. *Devries* – Based on agricultural grain packing studies.  
+    2. *Gal-Or* – Derived from metallic powder morphology.  
+    3. *Renedive & Lemelich* – Based on ceramic microsphere distributions.  
+
+  **Tip:** Choose `'normal'` or `'lognormal'` for generic simulations, and `'physical'` when modeling specific materials.
+
 
 ### 📦 **Spatial Parameters**
 
-- **`num_spheres`** *(int, default: 1000)*  
-  Total number of spheres to be generated in the foam. Affects computational cost and packing density.  
+- **`Number of Spheres`** *(int, default: 1000)*  
+  Total number of spheres to generate in the foam. Impacts computational cost and packing density.  
   **Typical range**: `10 – 100,000+`
 
-- **`box_size`** *(float or 3-tuple, default: auto)*  
-  Size of the bounding volume (either cubic or rectangular). If set to `auto`, the box will be scaled based on target density and number of spheres.  
+- **`Box Size`** *(float or 3-tuple, default: `'auto'`)*  
+  Size of the bounding volume (either cubic or rectangular). If set to `'auto'`, the size is calculated based on target density and number of spheres.  
   **Typical range**: `5.0 – 500.0`
 
-- **`density`** *(float, default: 0.2)*  
-  Target packing density of the foam. Defines the volume fraction of the space occupied by spheres.  
+- **`Density`** *(float, default: 0.2)*  
+  Target packing density. Defines the fraction of the total volume occupied by spheres.  
   **Typical range**: `0.01 – 0.74`  
-  *(0.74 = maximum for ordered packings like FCC)*
+  *(0.74 ≈ maximum density for ordered packings like FCC)*
 
-- **`periodic`** *(bool, default: False)*  
-  Whether to apply periodic boundary conditions. When `True`, spheres near the boundaries wrap around, allowing tiling and simulation of infinite domains.
 
 ### ⚙️ **Interaction & Placement Parameters**
 
-- **`overlap_percentage`** *(float, default: 0.0)*  
-  Maximum allowable overlap between neighboring spheres, as a percentage of the smaller radius. Set to zero for non-overlapping packings.  
+- **`Overlap Percentage`** *(float, default: 0.0)*  
+  Maximum allowable overlap between neighboring spheres, as a percentage of the smaller radius.  
+  Set to `0.0` for strictly non-overlapping packings.  
   **Typical range**: `0.0 – 0.3`
 
-- **`min_distance`** *(float, optional)*  
-  Minimum center-to-center distance allowed between spheres. Overrides overlap percentage if set.
-
-- **`seed`** *(int, optional)*  
-  Random seed for reproducible output. Use the same seed to regenerate identical foam configurations.
 
 ### 🧪 **Advanced / Experimental Parameters**
 
-- **`bias_centering`** *(bool, default: False)*  
-  Whether to bias sphere placement toward the center of the domain. Useful for simulating structures with graded density.
+- **`Periodic`** *(bool, default: `False`)*  
+  Whether to apply periodic boundary conditions. When `True`, spheres at the boundary wrap around, simulating infinite tiling.
 
-- **`fixed_radii`** *(list of float, optional)*  
-  Provide a custom list of radii instead of generating them statistically. Length must match `num_spheres`.
+- **`Standardized Atomic Radii`** *(list of float, optional)*  
+  Instead of drawing raw statistical radii, generated values are snapped to the closest atomic radius from a standardized van der Waals list.
 
-- **`anisotropy`** *(float, default: 0.0)*  
-  Degree of directional distortion applied to the spheres or box shape (e.g., elongation).  
-  **Typical range**: `0.0 – 1.0` *(0 = isotropic, 1 = highly stretched)*
+
+### 📂 **Output Parameters**
+
+- **`output_dir`** *(str, default: `'./output'`)*  
+  Directory path where generated data files, logs, and visualizations will be saved.  
+  If the directory does not exist, it will be created automatically.  
+  **Typical usage**: Specify a relative or absolute path to organize your simulation outputs.
 
 
 
@@ -170,15 +180,38 @@ The Foamify GUI looks like this.
 ### Command line operation
 
 
-# Dependencies
+# 📦 Dependencies
 
-- Python >= 3.8
-- numpy >= 1.21.0
-- scipy >= 1.7.0
-- matplotlib >= 3.5.0
-- numba >= 0.56.0
-- pandas >= 1.3.0
-- scikit-learn >= 1.0.0
+Foamify requires the following Python packages:
+
+- **Python** ≥ 3.8  
+  Core language runtime
+
+- **NumPy** ≥ 1.21.0  
+  Fast numerical arrays and linear algebra
+
+- **SciPy** ≥ 1.7.0  
+  Scientific computing and spatial algorithms
+
+- **Matplotlib** ≥ 3.5.0  
+  Visualization and plotting tools
+
+- **Numba** ≥ 0.56.0  
+  Just-In-Time (JIT) compiler for accelerating performance-critical sections
+
+- **Pandas** ≥ 1.3.0  
+  Data manipulation and I/O utilities
+
+- **Scikit-learn** ≥ 1.0.0  
+  Machine learning utilities and clustering algorithms
+
+---
+
+To install all dependencies at once, run:
+
+```bash
+pip install -r requirements.txt
+
 
 # Contributing
 
@@ -209,6 +242,12 @@ Foamify is open-source for a reason! We would love for you to use our software a
   url={https://github.com/jackericson98/foamify}
 }
 ```
+
+# References
+
+1. A. J. DeVries, Rubber Chemistry and Technology, 1958, 31, 1142-1205.
+2. B. Gal‐Or and H. Hoelscher, AIChE Journal, 1966, 12, 499-508.
+3. R. Lemlich, Chem. Eng. Commun, 1982, 16, 153-157.
 
 # Support
 
