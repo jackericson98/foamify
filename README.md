@@ -132,37 +132,46 @@ The project was created in collaboration with the Chemistry Department at Georgi
 
 
 <a name="Usage"></a>
+
 # Usage
 
-## Installation
+## 🚀 Installation
 
-#### From PyPI (Recommended)
+### 📦 From PyPI (Recommended)
+
+Install Foamify directly from [PyPI](https://pypi.org/project/foamify) using `pip`:
 
 ```bash
 pip install foamify
 ```
 
-#### From Source
+### 🛠️ From Source
+
+Clone the repository and install locally:
 
 ```bash
 git clone https://github.com/jackericson98/foamify.git
 cd foamify
+pip install .
 ```
 
-## Running the Program
 
-The general workflow for Foamify is 
+## 🧪 Running Foamify
 
-1. Configure the parameters
-2. Run the program
-3. Export the outputs
-4. Visualization and analysis
+The general workflow for Foamify is:
 
-### GUI Operation
+1. Configure parameters (via GUI or script)
+2. Run foam generation
+3. Export the coordinate and radius files
+4. Visualize and/or analyze the structure using PyMOL, Vorpy, or custom tools
 
-With Foamify installed to run the foamify GUI type the following
+---
 
-#### From PyPI 
+## 🖥️ GUI Operation
+
+Foamify includes an optional graphical user interface for quick parameter configuration and structure preview.
+
+### ▶️ Launch from PyPI Installation
 
 ```bash
 python
@@ -170,14 +179,83 @@ python
 >>> foamify.run()
 ```
 
-#### From Source
+### ▶️ Launch from Source
+
 ```bash
 python foamify
 ```
 
-The Foamify GUI looks like this. 
+📷 *GUI Screenshot Example Here*  
+<!-- Insert an image or markdown reference here like: ![Foamify GUI](assets/gui_example.png) -->
 
-### Command line operation
+
+## 💻 Command Line Operation
+
+Foamify can be run directly from the command line by calling the module and passing one or more arguments to override default parameters.
+
+### 📄 Basic Usage
+
+```bash
+python foamify <parameter1> <value1> <parameter2> <value2> ...
+```
+
+You can specify multiple parameters in a single command. Foamify will generate the foam immediately based on the provided configuration.
+
+
+### 🔑 Accepted Parameters and Aliases
+
+You may use any of the following keys or their aliases to set a parameter:
+
+| Parameter | Aliases |
+|-----------|---------|
+| `avg`     | size, average, mean, sz, avg, mu |
+| `std`     | std, cv, variance, standard_deviation, coefficient_of_variation |
+| `num`     | num, number, amount, quantity, bubbles, nmbr, bn |
+| `den`     | den, density, packing |
+| `olp`     | olp, overlap, crossing, olap |
+| `dst`     | dst, dist, distribution, pdf |
+| `pbc`     | pbc, periodic, cyclic |
+| `sar`     | sar, std_ar |
+
+
+### 🧪 Examples
+
+#### Generate a foam with 100 spheres:
+```bash
+python foamify num 100
+```
+
+#### Set the average sphere radius to 2.0:
+```bash
+python foamify size 2.0
+```
+
+#### Use a packing density of 0.3:
+```bash
+python foamify density 0.3
+```
+
+#### Allow 10% overlap between spheres:
+```bash
+python foamify overlap 0.1
+```
+
+#### Use a lognormal distribution for sphere sizes:
+```bash
+python foamify distribution lognormal
+```
+
+#### Enable periodic boundary conditions:
+```bash
+python foamify periodic true
+```
+
+#### Set multiple parameters in a single run:
+```bash
+python foamify avg 1.5 cv 1.0 den 0.5
+```
+
+This command sets the average radius to 1.5, the coefficient of variation to 1.0, and the packing density to 0.5 — and immediately generates the foam.
 
 
 # 📦 Dependencies
@@ -205,13 +283,12 @@ Foamify requires the following Python packages:
 - **Scikit-learn** ≥ 1.0.0  
   Machine learning utilities and clustering algorithms
 
----
 
 To install all dependencies at once, run:
 
 ```bash
 pip install -r requirements.txt
-
+```
 
 # Contributing
 
