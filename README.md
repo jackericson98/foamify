@@ -24,36 +24,53 @@ The project was created in collaboration with the Chemistry Department at Georgi
 
 # Features
 
-- **3D Sphere Generation**: Create random ensembles of spheres in 3D space
-- **Customizable Parameters**: Adjust size, distribution, and interaction of spheres
-- **Interactive GUI**: User-friendly graphical interface for parameter configuration
-- **Export Capabilities**: Save generated foam structures for further analysis
-- **Visualization Tools**: Built-in plotting and visualization features
-- **Machine Learning Integration**: Advanced density adjustment algorithms
+- **Randomized 3D Sphere Generation**
+   Generate disordered sphere packings in three-dimensional space to represent open- or closed-celled foams. Each run creates a unique configuration based on randomized seeds, with full reproducibility via seed locking.
 
-# Installation
+- **Customizable Geometry Parameters**
+   Control key physical and geometric features of the output foam, including total number of spheres, mean radius, density, polydispersity, overlap percentage, and distribution type (e.g., uniform, normal). Supports both bounded and periodic systems.
 
-## From PyPI (Recommended)
+- **Interactive GUI (Optional)**
+   A lightweight, optional graphical interface is included for real-time parameter tuning and instant feedback on generated foams. Useful for prototyping and educational purposes.
+
+- **Command-Line and Programmatic Interfaces**
+   Foamify can be used directly from the command line or imported as a Python module. Designed for flexibility in scripting, integration, or batch-processing workflows.
+
+- **PyPI Integration**
+   Foamify is fully packaged and published on the Python Package Index (PyPI), allowing for simple installation via pip install foamify. This makes integration into existing codebases fast and dependency management easy.
+
+- **Exportable Output Files**
+   Outputs are saved in standard, human-readable coordinate files that include each sphere’s center and radius. These files can be directly used with visualization tools or passed to downstream simulation software.
+
+- **Visualization Support**
+   Includes optional built-in plotting functions (e.g., 2D cross-sections, histograms of radius distributions), and exports are compatible with PyMOL and other 3D viewers for structural inspection.
+
+- **Compatible with Vorpy Analysis Suite**
+   Foamify outputs are directly compatible with Vorpy, enabling Voronoi-based spatial partitioning and curvature analysis. This supports advanced geometric characterization of the generated structures.
+
+- **Machine Learning–Enhanced Algorithms (Experimental)**
+   Includes preliminary integration of machine learning algorithms for smart density tuning and optimized foam construction. These methods aim to balance randomness with physical plausibility.
+
+- **Modular and Lightweight Codebase**
+   Designed with modular architecture and minimal external dependencies. Easy to extend or modify for specific research applications.
+
+<a name="Usage"></a>
+# Usage
+
+## Installation
+
+### From PyPI (Recommended)
 
 ```bash
 pip install foamify
 ```
 
-## From Source
+### From Source
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/jackericson98/foamify.git
-   cd foamify
-   ```
-
-2. Install in development mode:
-   ```bash
-   pip install -e .
-   ```
-
-<a name="Usage"></a>
-# Usage
+```bash
+git clone https://github.com/jackericson98/foamify.git
+cd foamify
+```
 
 The general workflow for Foamify is as follows:
 
