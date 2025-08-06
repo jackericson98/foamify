@@ -54,39 +54,121 @@ The project was created in collaboration with the Chemistry Department at Georgi
 - **Modular and Lightweight Codebase**
    Designed with modular architecture and minimal external dependencies. Easy to extend or modify for specific research applications.
 
+<a name="Parameters"></a>
+
+# Parameters
+
+Foamify supports a range of customizable parameters that define the geometric and statistical properties of the generated foam. These inputs allow you to tailor the output to specific physical or simulation constraints.
+
+### 📏 **Size & Distribution Parameters**
+
+- **`Mean Radius`** *(float, default: 1.0)*  
+  Average radius of the spheres. Controls the general scale of the structure.  
+  **Typical range**: `0.1 – 1000.0`
+
+- **`Polydispersity`** *(float, default: 0.25)*  
+  Controls the spread of the sphere sizes. A value of 0 produces monodisperse spheres; higher values introduce variability. Corresponds to the coefficient of variation of the distribution of radii. 
+  **Typical range**: `0.0 – 10.0`
+
+- **`Distribution Type`** *(str, default: `'normal'`)*  
+  Statistical distribution used to generate sphere radii.  
+  **Options**:
+  - `'uniform'` – all sizes within a fixed range  
+  - `'normal'` – bell curve centered on mean  
+  - `'lognormal'` – skewed distributions for highly porous media
+
+### 📦 **Spatial Parameters**
+
+- **`num_spheres`** *(int, default: 1000)*  
+  Total number of spheres to be generated in the foam. Affects computational cost and packing density.  
+  **Typical range**: `10 – 100,000+`
+
+- **`box_size`** *(float or 3-tuple, default: auto)*  
+  Size of the bounding volume (either cubic or rectangular). If set to `auto`, the box will be scaled based on target density and number of spheres.  
+  **Typical range**: `5.0 – 500.0`
+
+- **`density`** *(float, default: 0.2)*  
+  Target packing density of the foam. Defines the volume fraction of the space occupied by spheres.  
+  **Typical range**: `0.01 – 0.74`  
+  *(0.74 = maximum for ordered packings like FCC)*
+
+- **`periodic`** *(bool, default: False)*  
+  Whether to apply periodic boundary conditions. When `True`, spheres near the boundaries wrap around, allowing tiling and simulation of infinite domains.
+
+### ⚙️ **Interaction & Placement Parameters**
+
+- **`overlap_percentage`** *(float, default: 0.0)*  
+  Maximum allowable overlap between neighboring spheres, as a percentage of the smaller radius. Set to zero for non-overlapping packings.  
+  **Typical range**: `0.0 – 0.3`
+
+- **`min_distance`** *(float, optional)*  
+  Minimum center-to-center distance allowed between spheres. Overrides overlap percentage if set.
+
+- **`seed`** *(int, optional)*  
+  Random seed for reproducible output. Use the same seed to regenerate identical foam configurations.
+
+### 🧪 **Advanced / Experimental Parameters**
+
+- **`bias_centering`** *(bool, default: False)*  
+  Whether to bias sphere placement toward the center of the domain. Useful for simulating structures with graded density.
+
+- **`fixed_radii`** *(list of float, optional)*  
+  Provide a custom list of radii instead of generating them statistically. Length must match `num_spheres`.
+
+- **`anisotropy`** *(float, default: 0.0)*  
+  Degree of directional distortion applied to the spheres or box shape (e.g., elongation).  
+  **Typical range**: `0.0 – 1.0` *(0 = isotropic, 1 = highly stretched)*
+
+
+
 <a name="Usage"></a>
 # Usage
 
 ## Installation
 
-### From PyPI (Recommended)
+#### From PyPI (Recommended)
 
 ```bash
 pip install foamify
 ```
 
-### From Source
+#### From Source
 
 ```bash
 git clone https://github.com/jackericson98/foamify.git
 cd foamify
 ```
 
-The general workflow for Foamify is as follows:
+## Running the Program
 
-1. **Launch the GUI**: Run `foamify`
-2. **Configure Parameters**: Set your desired foam parameters through the interface
-3. **Generate Foam**: Click "Create Foam" to generate your 3D sphere ensemble
-4. **Export Results**: Save your generated foam for further analysis
+The general workflow for Foamify is 
 
-<a name="Parameters"></a>
-# Parameters
+1. Configure the parameters
+2. Run the program
+3. Export the outputs
+4. Visualization and analysis
 
-The foam generation can be customized with various parameters including:
-- Sphere size distributions
-- Density settings
-- Spatial arrangement
-- Interaction parameters
+### GUI Operation
+
+With Foamify installed to run the foamify GUI type the following
+
+#### From PyPI 
+
+```bash
+python
+>>> import foamify
+>>> foamify.run()
+```
+
+#### From Source
+```bash
+python foamify
+```
+
+The Foamify GUI looks like this. 
+
+### Command line operation
+
 
 # Dependencies
 
@@ -97,7 +179,6 @@ The foam generation can be customized with various parameters including:
 - numba >= 0.56.0
 - pandas >= 1.3.0
 - scikit-learn >= 1.0.0
-- tqdm >= 4.62.0
 
 # Contributing
 
@@ -109,12 +190,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 # Author
 
-**John Ericson** - Georgia State University (2025)
+**John Ericson** - Georgia State University (2025), Department of Chemistry
 
-- Email: jackericson98@gmail.com
+- Email: [jackericson98@gmail.com)[mailto:jackericson98@gmail.com]
 - GitHub: [@jackericson98](https://github.com/jackericson98)
 - Website: [ericsonlabs.com](https://www.ericsonlabs.com)
-- LinkedIn: 
+- LinkedIn: [John Ericson](https://www.linkedin.com/in/jackericson98/)
 
 # Citation
 
