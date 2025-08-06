@@ -1,12 +1,14 @@
-# foamify
+<p align="center">
+   <img width="200" height="200" alt="FoamifyLogo" src="https://github.com/user-attachments/assets/a83da7fe-3259-4b1a-a97c-4a715a7d9d53" />
+</p>
 
-An interactive simulated foam generator for creating 3-dimensional random ensembles of spheres.
+Welcome to Foamify, an interactive 3D randomized foam generator! Foamify generates the locations and radii of a random ensemble of 3D spheres that fall within a range of parameters. The spheres can be used to mimic bubbles in a foam allowing the user to perform complex analysis on simulated physics-based materials. 
 
-## Overview
+# Overview
 
-`foamify` is a Python package designed to create 3-dimensional random ensembles of spheres, mimicking the bubbles in foam based on user-defined parameters. This tool is particularly useful for researchers and scientists working in materials science, physics, and engineering applications.
+Foamify was developed in python and has been turned into a python package of its own. This allows for easy integration into the users existing code base (see [Usage](Usage). 
 
-## Features
+# Features
 
 - **3D Sphere Generation**: Create random ensembles of spheres in 3D space
 - **Customizable Parameters**: Adjust size, distribution, and interaction of spheres
@@ -15,15 +17,15 @@ An interactive simulated foam generator for creating 3-dimensional random ensemb
 - **Visualization Tools**: Built-in plotting and visualization features
 - **Machine Learning Integration**: Advanced density adjustment algorithms
 
-## Installation
+# Installation
 
-### From PyPI (Recommended)
+## From PyPI (Recommended)
 
 ```bash
 pip install foamify
 ```
 
-### From Source
+## From Source
 
 1. Clone the repository:
    ```bash
@@ -36,39 +38,17 @@ pip install foamify
    pip install -e .
    ```
 
-## Quick Start
+<a name="Usage"></a>
+# Usage
 
-### Command Line Interface
+The general workflow for Foamify is as follows:
 
-After installation, run the interactive GUI:
-
-```bash
-foamify
-```
-
-Or run as a Python module:
-
-```bash
-python -m foamify
-```
-
-### Python API
-
-```python
-import foamify
-
-# Use the package programmatically
-# (API documentation coming soon)
-```
-
-## Usage
-
-1. **Launch the GUI**: Run `foamify` from your terminal
+1. **Launch the GUI**: Run `foamify`
 2. **Configure Parameters**: Set your desired foam parameters through the interface
 3. **Generate Foam**: Click "Create Foam" to generate your 3D sphere ensemble
 4. **Export Results**: Save your generated foam for further analysis
 
-## Parameters
+# Parameters
 
 The foam generation can be customized with various parameters including:
 - Sphere size distributions
@@ -76,7 +56,7 @@ The foam generation can be customized with various parameters including:
 - Spatial arrangement
 - Interaction parameters
 
-## Dependencies
+# Dependencies
 
 - Python >= 3.8
 - numpy >= 1.21.0
@@ -87,24 +67,26 @@ The foam generation can be customized with various parameters including:
 - scikit-learn >= 1.0.0
 - tqdm >= 4.62.0
 
-## Contributing
+# Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Author
+# Author
 
 **John Ericson** - Georgia State University (2025)
 
 - Email: jackericson98@gmail.com
 - GitHub: [@jackericson98](https://github.com/jackericson98)
+- Website: [ericsonlabs.com](https://www.ericsonlabs.com)
+- LinkedIn: 
 
-## Citation
+# Citation
 
-If you use this software in your research, please cite:
+Foamify is open-source for a reason! We would love for you to use our software and even request features, but we also would you to toss us a bone if you do. If you use this software in your research, please cite:
 
 ```bibtex
 @software{foamify,
@@ -115,7 +97,7 @@ If you use this software in your research, please cite:
 }
 ```
 
-## Support
+# Support
 
 - **Issues**: [GitHub Issues](https://github.com/jackericson98/foamify/issues)
 - **Documentation**: [GitHub README](https://github.com/jackericson98/foamify#readme)
