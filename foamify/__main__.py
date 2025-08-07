@@ -9,7 +9,7 @@ if parent_dir not in sys.path:
 # Add everything in /api/ to the module search path.
 __path__ = [os.path.dirname(__file__), os.path.join(os.path.dirname(__file__), "api")]
 
-# New comment
+
 def main():
     "Main function to run foamify"
     try:

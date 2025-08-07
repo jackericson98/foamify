@@ -1,5 +1,5 @@
 <p align="center">
-   <img width="200" height="200" alt="FoamifyLogo" src="https://github.com/user-attachments/assets/a83da7fe-3259-4b1a-a97c-4a715a7d9d53" />
+   <img width="200" height="200" alt="FoamifyLogo" src="assets/FoamifyLogo.png" />
 </p>
 
 **Welcome to Foamify** — an interactive, randomized foam generator designed for scientific modeling and visualization. Foamify creates coordinate files specifying the locations and radii of a randomly generated ensemble of spheres, allowing users to produce custom foams for a wide range of applications. These virtual foams can be used to simulate and analyze physics-based systems such as aerated media, porous materials, and other complex microstructures. Sphere generation is governed by a flexible set of user-defined parameters (see [Parameters](#Parameters), offering full control over the statistical and geometric characteristics of the output.
@@ -21,6 +21,10 @@ The generator provides control over key structural parameters, including:
 Foamify outputs simple coordinate and radius data in plain-text format, compatible with visualization and analysis tools. This includes native support for (PyMOL)[pymol.org], as well as seamless interoperability with [VorPy](https://github.com/jackericson98/vorpy), a Voronoi-based geometry analysis tool developed in the same lab.
 
 The project was created in collaboration with the Chemistry Department at Georgia State University and is published on PyPI for easy installation and use within existing Python codebases. For usage examples and API documentation, see the [Usage](#Usage) section. 
+
+<p align="center">
+   <img width="600" alt="FoamifyCreateFoamBanner" src="assets/FoamifyCreateFoamBanner.png" />
+</p>
 
 # Features
 
