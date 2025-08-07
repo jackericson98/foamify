@@ -169,7 +169,6 @@ The general workflow for Foamify is:
 3. Export the coordinate and radius files
 4. Visualize and/or analyze the structure using PyMOL, Vorpy, or custom tools
 
----
 
 ## 🖥️ GUI Operation
 
