@@ -103,8 +103,51 @@ class SettingsGUI:
         # Set up the root
         self.root = tk.Tk()
         # Main window
-        self.root.title("FoamGen")
+        # self.root.title("Foamify")
         self.root.geometry("375x485")  # Set the window size
+
+        # Place the Foamify logo image under the title, with transparent background matching the window
+        try:
+            from PIL import Image, ImageTk
+
+            # Load the logo image
+            logo_image = Image.open("assets/FoamifyLogo2.png")
+
+            # Convert to RGBA to ensure transparency
+            if logo_image.mode != "RGBA":
+                logo_image = logo_image.convert("RGBA")
+
+            # Replace white or near-white background with full transparency to match 'wheat'
+            datas = logo_image.getdata()
+            newData = []
+            # Define a threshold for "white" (tune as needed)
+            threshold = 240
+            for item in datas:
+                # item is (R, G, B, A) or (R, G, B)
+                if len(item) == 4:
+                    r, g, b, a = item
+                else:
+                    r, g, b = item
+                    a = 255
+                if r > threshold and g > threshold and b > threshold:
+                    # Make transparent
+                    newData.append((255, 245, 200, 0))  # transparent, matches 'wheat' RGB
+                else:
+                    newData.append((r, g, b, a))
+            logo_image.putdata(newData)
+
+            # Resize the image
+            try:
+                resample = Image.Resampling.LANCZOS
+            except AttributeError:
+                resample = Image.LANCZOS
+            logo_image = logo_image.resize((120, 120), resample)
+
+            self.logo_photo = ImageTk.PhotoImage(logo_image)
+            logo_label = ttk.Label(self.root, image=self.logo_photo, background=None)
+            logo_label.grid(row=0, column=0, columnspan=3, pady=(0, 10))
+        except Exception as e:
+            print(f"Could not load logo image: {e}")
 
         # Setting up the grid and padding
         self.options = {'padx': 10, 'pady': 5}  # Common options for padding
@@ -173,7 +216,7 @@ class SettingsGUI:
 
     def create_widgets(self):
         # Create the title
-        ttk.Label(self.root, text='Foam Gen', font=self.title_font).grid(row=0, column=1, columnspan=2, pady=15)
+        # ttk.Label(self.root, text='Foam Gen', font=self.title_font).grid(row=0, column=1, columnspan=2, pady=15)
 
         # Padding on the right
         ttk.Label(self.root, text=' ').grid(column=0, padx=10)
