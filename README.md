@@ -261,6 +261,10 @@ python foamify avg 1.5 cv 1.0 den 0.5
 This command sets the average radius to 1.5, the coefficient of variation to 1.0, and the packing density to 0.5 — and immediately generates the foam.
 
 
+# 📷 Gallery
+
+
+
 # 📦 Dependencies
 
 Foamify requires the following Python packages:
