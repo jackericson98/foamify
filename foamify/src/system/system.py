@@ -10,10 +10,42 @@ from foamify.src.visualize import SettingsGUI
 class System:
     def __init__(self, args=None, bubbles=None, output_directory=None, gui=None, root_dir=None, print_actions=False):
         """
-        Class used to import files of all types and return a System
-        :param bubbles: List holding the atom objects
-        :param output_directory: Directory for export files to be output to
-        :param gui: The GUI object (tkinter) associated with loading the system and loading/creating the network
+        System class for managing and processing bubble/atom systems.
+
+        This class is used to import, store, and manipulate systems of bubbles (atoms), 
+        handle file I/O, and interface with a GUI if provided.
+
+        Attributes:
+            name (str): Name describing the system.
+            args (list or None): Pre-loaded arguments for system configuration.
+            bubbles (list or None): List holding the atom/bubble objects.
+            bubble_matrix (np.ndarray or None): 3D matrix for tracking bubble overlap.
+            box (Any): Vertices of the box containing the bubbles.
+            data (dict): Additional data provided by the base file.
+            dir (str or None): Output directory for export files.
+            vpy_dir (str): Directory where Vorpy is running.
+            max_atom_rad (float): Largest radius of the system for reference.
+            gui (Any): GUI object (e.g., tkinter) for system interaction.
+            print_actions (bool): Whether to print actions for debugging/logging.
+
+        Methods:
+            read_argv():
+                Reads and parses command-line arguments to set system parameters.
+
+            set_loaded_bubs():
+                Sets up the system when bubbles are loaded directly.
+
+            output():
+                Outputs the current system state to the output directory.
+
+        Returns:
+            System: An initialized System object.
+
+        Example:
+            >>> sys = System(args=['num', 100, 'avg', 1.0], output_directory='output/')
+            >>> sys.read_argv()
+            >>> print(sys.data)
+            {'avg': 1.0, 'std': 0.1, 'num': 100, 'den': 0.25, 'olp': 0.0, 'dst': 'gamma', 'pbc': False, 'sar': False}
         """
 
         # Names
@@ -43,6 +75,7 @@ class System:
             output_all(self)
 
     def read_argv(self):
+        
         # Set up the data dictionary
         self.data = {'avg': 1, 'std': 0.1, 'num': 1000, 'den': 0.25, 'olp': 0.0, 'dst': 'gamma', 'pbc': False,
                      'sar': False}

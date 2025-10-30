@@ -25,27 +25,27 @@ class HelpGUI:
                      "The name of the directory and the ball files refer to the settings used to create it, separated by underscores in the following order: Mean, CV, Number, Density, Overlap, PBC.",
                      "For more information on any of the settings, use the dropdown menu above."]]),
 
-            "Average": "\n\n".join([textwrap.fill(section, width=40) for section in [
-                       "Average Ball Size",
+            "Average Ball Radius": "\n\n".join([textwrap.fill(section, width=40) for section in [
+                       "Average Ball Radius",
 
                        "This setting refers to the the average ball/bubble radius size that the sample distribution uses to sample from."]]),
 
-            "CV": "\n\n".join([textwrap.fill(section, width=40) for section in [
+            "Radii Polydispersity (CV)": "\n\n".join([textwrap.fill(section, width=40) for section in [
                   "Coefficient of Variation",
                   "This setting is a general term that describes the width of the distribution. This is very similar to a "
             ]])
                   ,
-            "Number": "\n\n".join([textwrap.fill(section, width=40) for section in [
+            "Number of Balls": "\n\n".join([textwrap.fill(section, width=40) for section in [
                       "Number of Balls",
                       "The number of balls the output foam. "]]),
-            "Density": "\n\n".join([textwrap.fill(section, width=40) for section in [
+            "Ball Packing Density": "\n\n".join([textwrap.fill(section, width=40) for section in [
                        "Ball Packing Density"
                        "Sets the amount of space occupied by the balls relative to the total volume. Since the balls average out to the set average radius, the "]]),
-            "Overlap": "\n\n".join([textwrap.fill(section, width=40) for section in [
+            "Overlap Allowance (r)": "\n\n".join([textwrap.fill(section, width=40) for section in [
                        "Allowed Ball Overlap",
                        "The amount the balls are allowed to overlap as a percentage of the smaller of the overlapping balls' radius.",
                        "e.g. If Ball 1 has a radius of 2.0, ball 2 has a radius of 2.5, and the overlap setting if 0.5r, the balls can overlap at most by 1.0 or be placed any closer than 3.5 away from each other"]]),
-            "Distribution": "\n\n".join([textwrap.fill(section, width=40) for section in [
+            "Radii Distribution": "\n\n".join([textwrap.fill(section, width=40) for section in [
                             "Ball Radius Distribution",
                             "The distribution that the radii are pulled from. This determines how the set of output balls are sized. It, in combination with CV, determines how polydisperse the "]]),
             "Periodic Boundary": "\n\n".join([textwrap.fill(section, width=40) for section in [
@@ -104,14 +104,14 @@ class SettingsGUI:
         self.root = tk.Tk()
         # Main window
         # self.root.title("Foamify")
-        self.root.geometry("375x485")  # Set the window size
+        self.root.geometry("375x540")  # Set the window size
 
         # Place the Foamify logo image under the title, with transparent background matching the window
         try:
             from PIL import Image, ImageTk
 
             # Load the logo image
-            logo_image = Image.open("assets/FoamifyLogo2.png")
+            logo_image = Image.open("assets/FoamifyLogo.png")
 
             # Convert to RGBA to ensure transparency
             if logo_image.mode != "RGBA":
@@ -223,27 +223,27 @@ class SettingsGUI:
 
 
         # Average Entry
-        ttk.Label(self.root, text="Average", font=self.setting_labels_font).grid(row=1, column=1, sticky='w', **self.options)
+        ttk.Label(self.root, text="Average Ball Radius", font=self.setting_labels_font).grid(row=1, column=1, sticky='w', **self.options)
         ttk.Entry(self.root, textvariable=self.avg_var).grid(row=1, column=2, **self.options)
 
         # Standard Deviation Entry
-        ttk.Label(self.root, text="CV", font=self.setting_labels_font).grid(row=2, column=1, sticky='w', **self.options)
+        ttk.Label(self.root, text="Radii Polydispersity (CV)", font=self.setting_labels_font).grid(row=2, column=1, sticky='w', **self.options)
         ttk.Entry(self.root, textvariable=self.std_var).grid(row=2, column=2, **self.options)
 
         # Number Entry
-        ttk.Label(self.root, text="Number", font=self.setting_labels_font).grid(row=3, column=1, sticky='w', **self.options)
+        ttk.Label(self.root, text="Number of Balls", font=self.setting_labels_font).grid(row=3, column=1, sticky='w', **self.options)
         ttk.Entry(self.root, textvariable=self.num_var).grid(row=3, column=2, **self.options)
 
         # Density Entry/Slider
-        ttk.Label(self.root, text="Density", font=self.setting_labels_font).grid(row=4, column=1, sticky='w', **self.options)
+        ttk.Label(self.root, text="Ball Packing Density", font=self.setting_labels_font).grid(row=4, column=1, sticky='w', **self.options)
         ttk.Entry(self.root, textvariable=self.den_var).grid(row=4, column=2, **self.options)
 
         # Overlap Entry/Slider
-        ttk.Label(self.root, text="Overlap", font=self.setting_labels_font).grid(row=5, column=1, sticky='w', **self.options)
+        ttk.Label(self.root, text="Overlap Allowance (r)", font=self.setting_labels_font).grid(row=5, column=1, sticky='w', **self.options)
         ttk.Entry(self.root, textvariable=self.olp_var).grid(row=5, column=2, **self.options)
 
         # Distribution Dropdown
-        ttk.Label(self.root, text="Distribution", font=self.setting_labels_font).grid(row=6, column=1, sticky='w', **self.options)
+        ttk.Label(self.root, text="Radii Distribution", font=self.setting_labels_font).grid(row=6, column=1, sticky='w', **self.options)
         dst_options = ["Gamma", "Log-Normal", "Weibull", "Normal", "Half-Normal", "Physical 1 (Devries)",
                        "Physical 2 (Gal-Or)", "Physical 3 (Lemelich)"]
         dst_menu = ttk.Combobox(self.root, textvariable=self.dst_var, values=dst_options, width=14, font=self.settings_font)
